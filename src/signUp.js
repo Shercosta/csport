@@ -34,7 +34,7 @@ export default function SignUp() {
   return (
     <View style={styles.container}>
       <Text style={styles.logoText}>Sign Up</Text>
-      <Image style={styles.img} source={require("../assets/amico.png")} />
+      <Image style={styles.img} source={require("../assets/icosignup.png")} />
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
@@ -67,8 +67,8 @@ export default function SignUp() {
 
 const styles = StyleSheet.create({
   img: {
-    width: "25%",
-    height: "25%",
+    width: "15%",
+    height: "15%",
     aspectRatio: "268/250.85",
   },
   container: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   logoText: {
     // fontFamily: "Open Sans",
-    marginTop: "5%",
+    marginBottom: "10%",
     textAlign: "center",
     color: "#fff",
     fontSize: 40,
