@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, TextInput, Image, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const EditProfile = ({navigation}) => {
   return (
@@ -23,7 +22,7 @@ const EditProfile = ({navigation}) => {
       </TouchableOpacity>
       <View style={styles.content}>
       <View style={styles.action}>
-          <FontAwesome name="user-o" size={20} />
+          <Icon name="account-outline" size={20} />
           <TextInput
             placeholder="Username"
             placeholderTextColor="#666666"
@@ -36,7 +35,7 @@ const EditProfile = ({navigation}) => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" size={20} />
+          <Icon name="chart-arc" size={20} />
           <TextInput
             placeholder="Age"
             placeholderTextColor="#666666"
@@ -50,7 +49,7 @@ const EditProfile = ({navigation}) => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" size={20} />
+          <Icon name="human-male-height-variant" size={20} />
           <TextInput
             placeholder="Height"
             placeholderTextColor="#666666"
@@ -64,7 +63,7 @@ const EditProfile = ({navigation}) => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="envelope-o" size={20} />
+          <Icon name="weight" size={20}/>
           <TextInput
             placeholder="Weight"
             placeholderTextColor="#666666"
@@ -135,44 +134,44 @@ const styles = StyleSheet.create({
   iconStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between'
-},
-action: {
-  flexDirection: 'row',
-  marginTop: 20,
-  marginBottom: 10,
-  borderBottomWidth: 4,
-  borderBottomColor: '#f2f2f2',
-  width: '90%',
-  alignItems: 'center',
-  paddingBottom: 20,
-},
-textInput: {
-  flex: 1,
-  marginTop: Platform.OS === 'ios' ? 0 : -12,
-  paddingLeft: 10,
-  color: '#05375a',
-},
-btn: {
-  backgroundColor: '#7642AC',
-  width: '45%',
-  alignItems: 'center',
-  paddingVertical: 10,
-  color: 'white',
-  borderRadius: 5,
-  alignItems: 'center',
-},
-btn1: {
-  backgroundColor: '#535353',
-  width: '40%',
-  alignItems: 'center',
-  paddingVertical: 10,
-  color: 'white',
-  borderRadius: 5,
-},
-btntext: {
-  color: '#fff',
-  fontWeight: 'bold'
-},
+  },
+  action: {
+    flexDirection: 'row',
+    marginTop: 20,
+    marginBottom: 10,
+    borderBottomWidth: 4,
+    borderBottomColor: '#f2f2f2',
+    width: '90%',
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  textInput: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : -12,
+    paddingLeft: 10,
+    color: '#05375a',
+  },
+  btn: {
+    backgroundColor: '#7642AC',
+    width: '45%',
+    alignItems: 'center',
+    paddingVertical: 10,
+    color: 'white',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  btn1: {
+    backgroundColor: '#535353',
+    width: '40%',
+    alignItems: 'center',
+    paddingVertical: 10,
+    color: 'white',
+    borderRadius: 5,
+  },
+  btntext: {
+    color: '#fff',
+    fontWeight: 'bold'
+  },
 });
 
 export default EditProfile;
