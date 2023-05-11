@@ -1,6 +1,15 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
+<<<<<<< Updated upstream:components/ProfileScreen.js
+=======
+import {
+  AntDesign,
+  Ionicons,
+  FontAwesome5,
+  MaterialIcons,
+} from "@expo/vector-icons";
+>>>>>>> Stashed changes:src/Profile/ProfileScreen.js
 
 const ProfileScreen = ({ navigation }) => {
   return (
@@ -49,11 +58,32 @@ const ProfileScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
+      <View style={styles.navbar}>
+        <TouchableOpacity>
+          <AntDesign name="Trophy" size={40} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Ionicons name="barbell-sharp" size={40} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesome5 name="running" size={40} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <MaterialIcons name="account-circle" size={40} color="black" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  navbar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  navbarButton: {
+    fontSize: 30,
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
