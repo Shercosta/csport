@@ -1,15 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
-<<<<<<< Updated upstream:components/ProfileScreen.js
-=======
-import {
-  AntDesign,
-  Ionicons,
-  FontAwesome5,
-  MaterialIcons,
-} from "@expo/vector-icons";
->>>>>>> Stashed changes:src/Profile/ProfileScreen.js
 
 const ProfileScreen = ({ navigation }) => {
   return (
