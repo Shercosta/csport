@@ -16,7 +16,7 @@ export default function SignIn() {
 
   const handleSignIn = () => {
     if (username === "user@ex.com" && password === "password") {
-      navigation.navigate("Profile");
+      alert("Login berhasil");
     } else {
       alert("Login gagal");
     }
