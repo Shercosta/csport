@@ -5,6 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 // import Splash from "./components/Splash";
 import SignIn from "./src/signIn";
 import SignUp from "./src/signUp";
+import ProfileScreen from "./components/ProfileScreen";
+import Running from "./components/Running";
+import StartRunning from "./components/StartRunning";
+import Leaderboard from "./components/Leaderboard";
 
 const Stack = createStackNavigator();
 
@@ -12,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="SignIn">
+      <Stack.Navigator initialRouteName="ProfileScreen">
         <Stack.Screen
           name="SignIn"
           component={SignIn}
@@ -21,6 +25,26 @@ export default function App() {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Running"
+          component={Running}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="StartRunning"
+          component={StartRunning}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Leaderboard"
+          component={Leaderboard}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

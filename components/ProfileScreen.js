@@ -1,8 +1,19 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
+import {
+  AntDesign,
+  FontAwesome5,
+  MaterialIcons,
+  Ionicons,
+} from "react-native-vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = () => {
+  const navigation = useNavigation();
+  const running = () => {
+    navigation.navigate("Running");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.avatarContainer}>
@@ -57,7 +68,12 @@ const ProfileScreen = ({ navigation }) => {
           <Ionicons name="barbell-sharp" size={40} color="black" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <FontAwesome5 name="running" size={40} color="black" />
+          <FontAwesome5
+            name="running"
+            size={40}
+            color="black"
+            onPress={running}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <MaterialIcons name="account-circle" size={40} color="black" />
