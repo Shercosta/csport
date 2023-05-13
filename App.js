@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SignIn from "./src/signIn";
 import SignUp from "./src/signUp";
 import ProfileScreen from "./components/ProfileScreen";
+import EditProfile from "./components/EditProfile";
 import Running from "./components/Running";
 import StartRunning from "./components/StartRunning";
 import Leaderboard from "./components/Leaderboard";
@@ -16,7 +17,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="ProfileScreen">
+      <Stack.Navigator initialRouteName="SignIn">
         <Stack.Screen
           name="SignIn"
           component={SignIn}
@@ -30,6 +31,11 @@ export default function App() {
         <Stack.Screen
           name="ProfileScreen"
           component={ProfileScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Edit Profile"
+          component={EditProfile}
           options={{ headerShown: false }}
         />
         <Stack.Screen

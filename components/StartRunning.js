@@ -8,7 +8,7 @@ const StartRunning = () => {
   const navigation = useNavigation();
 
   const handleDone = () => {
-    navigation.navigate("Running");
+    navigation.navigate("Leaderboard");
   };
 
   useEffect(() => {
