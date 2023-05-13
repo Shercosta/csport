@@ -14,6 +14,12 @@ const Leaderboard = () => {
   const handleRunning = () => {
     navigation.navigate("Running");
   };
+  const Workout = () => {
+    navigation.navigate("Workout");
+  };
+  const Profile = () => {
+    navigation.navigate("ProfileScreen");
+  };
 
   const users = [
     { name: "User 1", distance: "10 km" },
@@ -58,13 +64,23 @@ const Leaderboard = () => {
           <AntDesign name="Trophy" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons name="barbell-sharp" size={40} color="white" />
+        <Ionicons 
+          name="barbell-sharp" 
+          size={40} 
+          color="white" 
+          onPress={Workout}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <FontAwesome5 name="running" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <MaterialIcons name="account-circle" size={40} color="white" />
+          <MaterialIcons 
+          name="account-circle" 
+          size={40} 
+          color="white" 
+          onPress={Profile}
+          />
         </TouchableOpacity>
       </View>
     </View>

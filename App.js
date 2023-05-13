@@ -10,6 +10,7 @@ import EditProfile from "./components/EditProfile";
 import Running from "./components/Running";
 import StartRunning from "./components/StartRunning";
 import Leaderboard from "./components/Leaderboard";
+import Workout from "./components/Workout";
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,11 @@ export default function App() {
         <Stack.Screen
           name="Leaderboard"
           component={Leaderboard}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Workout"
+          component={Workout}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -20,6 +20,9 @@ const ProfileScreen = () => {
   const SignIn = () => {
     navigation.navigate("SignIn");
   };
+  const Workout = () => {
+    navigation.navigate("Workout");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.avatarContainer}>
@@ -71,7 +74,11 @@ const ProfileScreen = () => {
           <AntDesign name="Trophy" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons name="barbell-sharp" size={40} color="white" />
+          <Ionicons 
+          name="barbell-sharp" 
+          size={40} 
+          color="white"
+          onPress={Workout} />
         </TouchableOpacity>
         <TouchableOpacity>
           <FontAwesome5
