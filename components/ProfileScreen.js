@@ -1,8 +1,25 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useState } from "react";
+import {
+  AntDesign,
+  FontAwesome5,
+  MaterialIcons,
+  Ionicons,
+} from "react-native-vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = () => {
+  const navigation = useNavigation();
+  const running = () => {
+    navigation.navigate("Running");
+  };
+  const EditProfile = () => {
+    navigation.navigate("EditProfile");
+  };
+  const SignIn = () => {
+    navigation.navigate("SignIn");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.avatarContainer}>
@@ -42,7 +59,7 @@ const ProfileScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.btn1}
             onPress={() => {
-              navigation.navigate("Login");
+              navigation.navigate("SignIn");
             }}
           >
             <Text style={styles.btntext}>LOGOUT</Text>
@@ -51,16 +68,21 @@ const ProfileScreen = ({ navigation }) => {
       </View>
       <View style={styles.navbar}>
         <TouchableOpacity>
-          <AntDesign name="Trophy" size={40} color="black" />
+          <AntDesign name="Trophy" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons name="barbell-sharp" size={40} color="black" />
+          <Ionicons name="barbell-sharp" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <FontAwesome5 name="running" size={40} color="black" />
+          <FontAwesome5
+            name="running"
+            size={40}
+            color="white"
+            onPress={running}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
-          <MaterialIcons name="account-circle" size={40} color="black" />
+          <MaterialIcons name="account-circle" size={40} color="white" />
         </TouchableOpacity>
       </View>
     </View>
@@ -71,14 +93,26 @@ const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  navbarButton: {
-    fontSize: 30,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 10,
+    backgroundColor: "#490959",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: -2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   container: {
     flex: 1,
     backgroundColor: "#fff",
     padding: 20,
+    marginTop: 40,
   },
   coverImage: {
     height: 200,
