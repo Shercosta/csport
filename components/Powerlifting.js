@@ -7,10 +7,7 @@ import {
   Ionicons,
 } from "react-native-vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Record from "./Record";
-import Running from "./Running";
 
-  
 const Powerlifting= () => {
     const [squatWeight1, setSquatWeight1] = useState(0);
     const [squatWeight2, setSquatWeight2] = useState(0);
