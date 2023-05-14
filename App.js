@@ -10,6 +10,9 @@ import EditProfile from "./components/EditProfile";
 import Running from "./components/Running";
 import StartRunning from "./components/StartRunning";
 import Leaderboard from "./components/Leaderboard";
+import Workout from "./components/Workout";
+import Record from "./components/Record";
+import Powerlifting from "./components/Powerlifting";
 
 const Stack = createStackNavigator();
 
@@ -39,6 +42,16 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name="Record"
+          component={Record}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Powerlifting"
+          component={Powerlifting}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="Running"
           component={Running}
           options={{ headerShown: false }}
@@ -53,6 +66,11 @@ export default function App() {
           component={Leaderboard}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Workout"
+          component={Workout}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
     // <View style={styles.container}>
@@ -64,11 +82,3 @@ export default function App() {
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#7642AC",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });

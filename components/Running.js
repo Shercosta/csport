@@ -20,6 +20,12 @@ const Running = () => {
   const leaderboard = () => {
     navigation.navigate("Leaderboard");
   };
+  const Workout = () => {
+    navigation.navigate("Workout");
+  };
+  const Record = () => {
+    navigation.navigate("Record");
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,6 +36,7 @@ const Running = () => {
             color={"white"}
             style={styles.icon}
           />
+          <Text style={styles.HeaderText}>Running</Text>
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.8} onPress={leaderboard}>
           <MaterialIcons
@@ -38,6 +45,7 @@ const Running = () => {
             color={"#808080"}
             style={styles.icon}
           />
+          <Text style={styles.HeaderText}>Leaderboard</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
@@ -51,10 +59,20 @@ const Running = () => {
       </View>
       <View style={styles.navbar}>
         <TouchableOpacity>
-          <AntDesign name="Trophy" size={40} color="white" />
+        <AntDesign 
+          name="Trophy" 
+          size={40} 
+          color="#818181" 
+          onPress={Record}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons name="barbell-sharp" size={40} color="white" />
+          <Ionicons 
+          name="barbell-sharp" 
+          size={40} 
+          color="#818181" 
+          onPress={Workout}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <FontAwesome5 name="running" size={40} color="white" />
@@ -63,7 +81,7 @@ const Running = () => {
           <MaterialIcons
             name="account-circle"
             size={40}
-            color="white"
+            color="#818181"
             onPress={Profile}
           />
         </TouchableOpacity>
@@ -78,7 +96,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: 15,
     paddingHorizontal: 20,
     backgroundColor: "#7642ac",
     shadowColor: "#000",
@@ -94,6 +112,7 @@ const styles = StyleSheet.create({
 
   icon: {
     marginHorizontal: 40,
+    paddingTop: 12,
   },
   content: {
     flex: 1,
@@ -112,6 +131,14 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  HeaderText: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "bold",
+    textAlign: "center",
+    paddingTop: 10,
+    paddingBottom: -10,
   },
   navbar: {
     flexDirection: "row",

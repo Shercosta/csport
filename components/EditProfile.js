@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const EditProfile = ({navigation}) => {
   return (
     <View style={styles.container}>
-    
+    <Text style={styles.textHeader}>Edit Profile</Text>
     <TouchableOpacity onPress={() => {}}>
       <View style={styles.avatarContainer}>
         <Image
@@ -100,11 +100,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 20,
-    marginTop: 40,
+  },
+  textHeader: {
+    fontSize: 45,
+    fontWeight: "bold",
+    position: "absolute",
+    top: 65,
+    left: 40,
   },
   avatarContainer: {
     alignItems: 'center',
-    marginTop: 70,
+    marginTop: 120,
   },
   avatar: {
     width: 180,
@@ -113,6 +119,7 @@ const styles = StyleSheet.create({
   },
   content: {
     marginTop: 40,
+    alignItems: "center"
   },
   infoContainer: {
     flexDirection: "row",
@@ -132,18 +139,13 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#000000",
   },
-  iconStyle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
   action: {
     flexDirection: 'row',
     marginTop: 20,
     marginBottom: 10,
     borderBottomWidth: 4,
     borderBottomColor: '#f2f2f2',
-    width: '90%',
-    alignItems: 'center',
+    width: '70%',
     paddingBottom: 20,
   },
   textInput: {
