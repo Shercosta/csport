@@ -8,6 +8,7 @@ import {
   Ionicons,
 } from "react-native-vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Powerlifting from "./Powerlifting";
 
 const Workout = () => {
     const navigation = useNavigation();
@@ -17,13 +18,16 @@ const Workout = () => {
     const ProfileScreen = () => {
       navigation.navigate("ProfileScreen");
     };
-    const SignIn = () => {
-      navigation.navigate("SignIn");
+    const Record = () => {
+      navigation.navigate("Record");
+    };
+    const Powerlifting = () => {
+      navigation.navigate("Powerlifting");
     };
   return (
     <View style={styles.container}>
       <Text style={styles.textHeader}>Workout</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={Powerlifting}>
         <View style={styles.content}>
             <View style={styles.boxContainer}>
                 <Text style={styles.boxHead}>Powerlifting</Text>
@@ -37,7 +41,12 @@ const Workout = () => {
       </TouchableOpacity>
       <View style={styles.navbar}>
         <TouchableOpacity>
-          <AntDesign name="Trophy" size={40} color="white" />
+          <AntDesign 
+          name="Trophy" 
+          size={40} 
+          color="#818181" 
+          onPress={Record}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <Ionicons name="barbell-sharp" size={40} color="white" />
@@ -46,7 +55,7 @@ const Workout = () => {
             <FontAwesome5
                 name="running"
                 size={40}
-                color="white"
+                color="#818181"
                 onPress={running}
             />
         </TouchableOpacity>
@@ -54,7 +63,7 @@ const Workout = () => {
           <MaterialIcons
             name="account-circle"
             size={40}
-            color="white"
+            color="#818181"
             onPress={ProfileScreen}
           />
         </TouchableOpacity>

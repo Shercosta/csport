@@ -8,6 +8,7 @@ import {
   Ionicons,
 } from "react-native-vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Record from "./Record";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -23,8 +24,12 @@ const ProfileScreen = () => {
   const Workout = () => {
     navigation.navigate("Workout");
   };
+  const Record = () => {
+    navigation.navigate("Record");
+  };
   return (
     <View style={styles.container}>
+      <Text style={styles.textHeader}>Profile</Text>
       <View style={styles.avatarContainer}>
         <Image
           source={{
@@ -71,20 +76,25 @@ const ProfileScreen = () => {
       </View>
       <View style={styles.navbar}>
         <TouchableOpacity>
-          <AntDesign name="Trophy" size={40} color="white" />
+          <AntDesign 
+          name="Trophy" 
+          size={40} 
+          color="#818181" 
+          onPress={Record}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <Ionicons 
           name="barbell-sharp" 
           size={40} 
-          color="white"
+          color="#818181"
           onPress={Workout} />
         </TouchableOpacity>
         <TouchableOpacity>
           <FontAwesome5
             name="running"
             size={40}
-            color="white"
+            color="#818181"
             onPress={running}
           />
         </TouchableOpacity>
@@ -119,7 +129,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     padding: 20,
-    marginTop: 40,
+  },
+  textHeader: {
+    fontSize: 45,
+    fontWeight: "bold",
+    position: "absolute",
+    top: 65,
+    left: 40,
   },
   coverImage: {
     height: 200,
@@ -130,7 +146,7 @@ const styles = StyleSheet.create({
   },
   avatarContainer: {
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 110,
   },
   avatar: {
     width: 180,

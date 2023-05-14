@@ -7,6 +7,8 @@ import {
   Ionicons,
 } from "react-native-vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import Record from "./Record";
+import Running from "./Running";
 
 const Leaderboard = () => {
   const navigation = useNavigation();
@@ -19,6 +21,9 @@ const Leaderboard = () => {
   };
   const Profile = () => {
     navigation.navigate("ProfileScreen");
+  };
+  const Record = () => {
+    navigation.navigate("Record");
   };
 
   const users = [
@@ -38,6 +43,7 @@ const Leaderboard = () => {
             color={"#808080"}
             style={styles.icon}
           />
+          <Text style={styles.HeaderText}>Running</Text>
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.8}>
           <MaterialIcons
@@ -46,6 +52,7 @@ const Leaderboard = () => {
             color={"white"}
             style={styles.icon}
           />
+          <Text style={styles.HeaderText}>Leaderboard</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
@@ -61,13 +68,18 @@ const Leaderboard = () => {
       </View>
       <View style={styles.navbar}>
         <TouchableOpacity>
-          <AntDesign name="Trophy" size={40} color="white" />
+          <AntDesign 
+          name="Trophy" 
+          size={40} 
+          color="#818181" 
+          onPress={Record}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
         <Ionicons 
           name="barbell-sharp" 
           size={40} 
-          color="white" 
+          color="#818181" 
           onPress={Workout}
           />
         </TouchableOpacity>
@@ -78,7 +90,7 @@ const Leaderboard = () => {
           <MaterialIcons 
           name="account-circle" 
           size={40} 
-          color="white" 
+          color="#818181" 
           onPress={Profile}
           />
         </TouchableOpacity>
@@ -93,7 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: 15,
     paddingHorizontal: 20,
     backgroundColor: "#7642ac",
     shadowColor: "#000",
@@ -109,6 +121,7 @@ const styles = StyleSheet.create({
 
   icon: {
     marginHorizontal: 40,
+    paddingTop: 12,
   },
   container: {
     flex: 1,
@@ -138,6 +151,14 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#f0f0f0",
     borderRadius: 10,
+  },
+  HeaderText: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "bold",
+    textAlign: "center",
+    paddingTop: 10,
+    paddingBottom: -10,
   },
   userContainer: {
     flexDirection: "row",
