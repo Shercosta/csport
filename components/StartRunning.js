@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import config from "../config";
 
 const StartRunning = () => {
   const [time, setTime] = useState(0);

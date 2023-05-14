@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import {
   AntDesign,
   FontAwesome5,
@@ -8,7 +8,8 @@ import {
   Ionicons,
 } from "react-native-vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Record from "./Record";
+import axios from "axios";
+import config from "../config";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -18,18 +19,30 @@ const ProfileScreen = () => {
   const EditProfile = () => {
     navigation.navigate("EditProfile");
   };
-  const SignIn = () => {
-    navigation.navigate("SignIn");
+  const signOut = () => {
+    const url = config.baseUrl + '/api/auth/logout'
+    axios.delete(url).then(({}) => {
+      navigation.navigate("SignIn");
+    }).catch(() => {})
   };
-  const Workout = () => {
-    navigation.navigate("Workout");
-  };
-  const Record = () => {
-    navigation.navigate("Record");
-  };
+  const [profile, setProfile] = useState({
+    name: '-',
+    age: 0,
+    height: 0,
+    weight: 0,
+  });
+
+  // Get data.
+  const url = config.baseUrl + '/api/me'
+  useEffect(() => {
+    axios.get(url).then(({data}) => {
+      setProfile(data.data)
+    })
+  }, [])
+
   return (
     <View style={styles.container}>
-      <Text style={styles.textHeader}>Profile</Text>
+      <Text style={styles.textHeader}>Personal Record</Text>
       <View style={styles.avatarContainer}>
         <Image
           source={{
@@ -41,19 +54,19 @@ const ProfileScreen = () => {
       <View style={styles.content}>
         <View style={styles.infoContainer}>
           <Text style={styles.infoLabel}>Name</Text>
-          <Text style={styles.infoValue}>user</Text>
+          <Text style={styles.infoValue}>{ profile.name }</Text>
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.infoLabel}>Age</Text>
-          <Text style={styles.infoValue}>21</Text>
+          <Text style={styles.infoValue}>{ profile.age }</Text>
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.infoLabel}>Height</Text>
-          <Text style={styles.infoValue}>172 cm</Text>
+          <Text style={styles.infoValue}>{ profile.height} cm</Text>
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.infoLabel}>Weight</Text>
-          <Text style={styles.infoValue}>79 kg</Text>
+          <Text style={styles.infoValue}>{ profile.weight } kg</Text>
         </View>
         <View style={styles.infoContainer}>
           <TouchableOpacity
@@ -66,31 +79,24 @@ const ProfileScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.btn1}
-            onPress={() => {
-              navigation.navigate("SignIn");
-            }}
-          >
+            onPress={() => signOut()}
+            >
             <Text style={styles.btntext}>LOGOUT</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View style={styles.navbar}>
         <TouchableOpacity>
-          <AntDesign name="Trophy" size={40} color="#818181" onPress={Record} />
+          <AntDesign name="Trophy" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons
-            name="barbell-sharp"
-            size={40}
-            color="#818181"
-            onPress={Workout}
-          />
+          <Ionicons name="barbell-sharp" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity>
           <FontAwesome5
             name="running"
             size={40}
-            color="#818181"
+            color="white"
             onPress={running}
           />
         </TouchableOpacity>
@@ -145,8 +151,8 @@ const styles = StyleSheet.create({
     marginTop: 110,
   },
   avatar: {
-    width: 180,
-    height: 180,
+    width: 150,
+    height: 150,
     borderRadius: 100,
   },
   content: {

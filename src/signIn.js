@@ -9,50 +9,33 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import config from "../config";
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const navigation = useNavigation();
 
-  // let accounts = axios
-  //   .get("https://csport-backend.herokuapp.com/csport-login")
-  //   .then((docs) => {
-  //     // console.log(docs.data.data);
-  //     accounts = docs.data.data;
-  //   });
-
-  // console.log(accounts);
-
   const handleSignIn = () => {
-    let isCheck = false;
-    axios
-      .get("https://csport-backend.herokuapp.com/csport-login")
-      .then((value) => {
-        for (let i = 0; i < value.data.data.length; i++) {
-          if (
-            username == value.data.data[i].username &&
-            password == value.data.data[i].password
-          ) {
-            navigation.navigate("ProfileScreen");
-
-            isCheck = true;
-          }
-        }
-        if (!isCheck) {
-          alert("Login gagal");
-        }
-      });
+    const url = config.baseUrl + '/api/auth/login'
+    const body = {username, password}
+    axios.post(url, body).then(() => {
+      navigation.navigate("ProfileScreen");
+    }).catch(() => {
+      alert("Login gagal");
+    })
   };
   const handleCreate = () => {
-    // if (username === "user@ex.com" && password === "password") {
-    //   alert("Login berhasil");
-    // } else {
-    //   alert("Login gagal");
-    // }
     navigation.navigate("SignUp");
   };
+
+  // Mengecek session.
+  const url = config.baseUrl + '/api/me'
+  useEffect(() => {
+    axios.get(url).then(({data}) => {
+      navigation.navigate("ProfileScreen");
+    }).catch(() => {})
+  }, [])
 
   return (
     <View style={styles.container}>

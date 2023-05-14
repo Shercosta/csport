@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import {
   AntDesign,
@@ -7,8 +7,10 @@ import {
   Ionicons,
 } from "react-native-vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 import Record from "./Record";
 import Running from "./Running";
+import config from "../config";
 
 const Leaderboard = () => {
   const navigation = useNavigation();
@@ -26,12 +28,13 @@ const Leaderboard = () => {
     navigation.navigate("Record");
   };
 
-  const users = [
-    { name: "User 1", distance: "10 km" },
-    { name: "User 2", distance: "8 km" },
-    { name: "User 3", distance: "12 km" },
-    // Add more users as needed
-  ];
+  const [users, setUsers] = useState([]) // [name, disatance]
+
+  // Get users.
+  const url = config.baseUrl + '/api/users'
+  axios.get(url).then(({data}) => {
+    setUsers(data.data)
+  }).catch(() => {})
 
   return (
     <View style={styles.container}>
