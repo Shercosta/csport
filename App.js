@@ -13,14 +13,18 @@ import Leaderboard from "./components/Leaderboard";
 import Workout from "./components/Workout";
 import Record from "./components/Record";
 import Powerlifting from "./components/Powerlifting";
+import { Provider } from "react-redux";
+import store from "./src/redux-thunk/store";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <Provider store={store}>
+
     <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="ProfileScreen">
+      <Stack.Navigator initialRouteName="SignIn">
         <Stack.Screen
           name="SignIn"
           component={SignIn}
@@ -30,7 +34,7 @@ export default function App() {
           name="SignUp"
           component={SignUp}
           options={{ headerShown: false }}
-        />
+          />
         <Stack.Screen
           name="ProfileScreen"
           component={ProfileScreen}
@@ -40,22 +44,22 @@ export default function App() {
           name="Edit Profile"
           component={EditProfile}
           options={{ headerShown: false }}
-        />
+          />
         <Stack.Screen
           name="Record"
           component={Record}
           options={{ headerShown: false }}
-        />
+          />
         <Stack.Screen
           name="Powerlifting"
           component={Powerlifting}
           options={{ headerShown: false }}
-        />
+          />
         <Stack.Screen
           name="Running"
           component={Running}
           options={{ headerShown: false }}
-        />
+          />
         <Stack.Screen
           name="StartRunning"
           component={StartRunning}
@@ -65,14 +69,15 @@ export default function App() {
           name="Leaderboard"
           component={Leaderboard}
           options={{ headerShown: false }}
-        />
+          />
         <Stack.Screen
           name="Workout"
           component={Workout}
           options={{ headerShown: false }}
-        />
+          />
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
     // <View style={styles.container}>
     // <Text>Open up App.js to start working on your app!</Text>
     //  <Splash />

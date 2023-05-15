@@ -10,10 +10,21 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import config from "../config";
+import { fetchIP } from "../src/redux-thunk/Action";
+import { useSelector, useDispatch } from "react-redux";
 import Workout from "./Workout";
 import Record from "./Record";
 
 const ProfileScreen = () => {
+  const ipData = useSelector((state) => state.data);
+  const loading = useSelector((state) => state.loading);
+  const error = useSelector((state) => state.error);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIP());
+  }), [dispatch];
+
   const navigation = useNavigation();
   const running = () => {
     navigation.navigate("Running");
@@ -27,7 +38,7 @@ const ProfileScreen = () => {
   const Record = () => {
     navigation.navigate("Record")
   };
-  
+
   const signOut = () => {
     const url = config.baseUrl + '/api/auth/logout'
     axios.delete(url).then(({}) => {
@@ -48,6 +59,22 @@ const ProfileScreen = () => {
       setProfile(data.data)
     })
   }, [])
+
+  // if (loading) {
+  //   return (
+  //     <View style={styles.container}>
+  //       <Text style={styles.textHeader}>Loading...</Text>
+  //     </View>
+  //   );
+  // }
+
+  if (error) {
+    return (
+    <View style={styles.container}>
+      <Text style={styles.textHeader}>Error: {error}</Text>
+    </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -77,6 +104,22 @@ const ProfileScreen = () => {
           <Text style={styles.infoLabel}>Weight</Text>
           <Text style={styles.infoValue}>{ profile.weight } kg</Text>
         </View>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>Your IP</Text>
+          <Text style={styles.infoValue}>{ ipData?.query }</Text>
+        </View>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>City</Text>
+          <Text style={styles.infoValue}>{ ipData?.city }</Text>
+        </View>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>Timezone</Text>
+          <Text style={styles.infoValue}>{ ipData?.timezone }</Text>
+        </View>
+        {/* <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>ISP</Text>
+          <Text style={styles.infoValue}>{ ipData?.isp }</Text>
+        </View> */}
         <View style={styles.infoContainer}>
           <TouchableOpacity
             style={styles.btn}
@@ -180,18 +223,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: "4%",
+    // marginVertical: "1%",
     width: "90%",
     padding: 10,
     borderRadius: 10,
   },
   infoLabel: {
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: "bold",
     color: "#000000",
   },
   infoValue: {
-    fontSize: 25,
+    fontSize: 22,
     color: "#000000",
   },
   btn: {
