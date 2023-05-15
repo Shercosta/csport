@@ -9,7 +9,7 @@ const EditProfile = ({navigation}) => {
     <TouchableOpacity onPress={() => {}}>
       <View style={styles.avatarContainer}>
         <Image
-          source={{ uri: 'https://res.cloudinary.com/ddraodqz5/image/upload/v1664331064/DSC_0103_b_pzic4p.webp' }}
+          source={{ uri: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png' }}
           style={styles.avatar}
           />
         <Icon name="camera" size={40} color="#fff" style={{

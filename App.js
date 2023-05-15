@@ -20,7 +20,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="SignIn">
+      <Stack.Navigator initialRouteName="ProfileScreen">
         <Stack.Screen
           name="SignIn"
           component={SignIn}

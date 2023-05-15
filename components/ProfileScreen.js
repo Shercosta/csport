@@ -10,6 +10,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import config from "../config";
+import Workout from "./Workout";
+import Record from "./Record";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -19,6 +21,13 @@ const ProfileScreen = () => {
   const EditProfile = () => {
     navigation.navigate("EditProfile");
   };
+  const Workout = () => {
+    navigation.navigate("Workout");
+  };
+  const Record = () => {
+    navigation.navigate("Record")
+  };
+  
   const signOut = () => {
     const url = config.baseUrl + '/api/auth/logout'
     axios.delete(url).then(({}) => {
@@ -42,7 +51,7 @@ const ProfileScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textHeader}>Personal Record</Text>
+      <Text style={styles.textHeader}>Profile</Text>
       <View style={styles.avatarContainer}>
         <Image
           source={{
@@ -71,9 +80,7 @@ const ProfileScreen = () => {
         <View style={styles.infoContainer}>
           <TouchableOpacity
             style={styles.btn}
-            onPress={() => {
-              navigation.navigate("Edit Profile");
-            }}
+            onPress={EditProfile}
           >
             <Text style={styles.btntext}>EDIT PROFILE</Text>
           </TouchableOpacity>
@@ -87,16 +94,26 @@ const ProfileScreen = () => {
       </View>
       <View style={styles.navbar}>
         <TouchableOpacity>
-          <AntDesign name="Trophy" size={40} color="white" />
+          <AntDesign 
+          name="Trophy" 
+          size={40} 
+          color="#818181" 
+          onPress={Record}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Ionicons name="barbell-sharp" size={40} color="white" />
+          <Ionicons 
+          name="barbell-sharp" 
+          size={40} 
+          color="#818181" 
+          onPress={Workout}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <FontAwesome5
             name="running"
             size={40}
-            color="white"
+            color="#818181"
             onPress={running}
           />
         </TouchableOpacity>
@@ -157,12 +174,13 @@ const styles = StyleSheet.create({
   },
   content: {
     marginTop: 20,
+    marginLeft: 10,
   },
   infoContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 15,
+    marginVertical: "4%",
     width: "90%",
     padding: 10,
     borderRadius: 10,
