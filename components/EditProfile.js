@@ -1,8 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { View, TextInput, Image, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import config from '../config';
+import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
-const EditProfile = ({navigation}) => {
+const EditProfile = () => {
+  const [name, setName] = React.useState('');
+  const [age, setAge] = React.useState('');
+  const [height, setHeight] = React.useState('');
+  const [weight, setWeight] = React.useState('');
+  const navigation = useNavigation();
+
+  const getBio = () => {
+    const url = config.baseUrl + '/api/me'
+    axios.get(url).then(({data}) => {
+      const profile = data.data;
+      setName(profile.name);
+      setAge(profile.age.toString());
+      setHeight(profile.height.toString());
+      setWeight(profile.weight.toString());
+    })
+  };
+
+  useEffect(() => {
+    getBio();
+  }, []);
+
+  const saveBio = () => {
+    const url = config.baseUrl + '/api/me/bio'
+    const body = {name, age, height, weight}
+    axios.put(url, body).then(() => {
+      Alert.alert('Success', 'Bio updated');
+      navigation.navigate("ProfileScreen");
+      getBio();
+  }).catch(() => {
+    alert('Update Bio Failure')
+  })
+};
+
   return (
     <View style={styles.container}>
     <Text style={styles.textHeader}>Edit Profile</Text>
@@ -24,9 +60,11 @@ const EditProfile = ({navigation}) => {
       <View style={styles.action}>
           <Icon name="account-outline" size={20} />
           <TextInput
-            placeholder="Username"
+            placeholder="Nama"
+            value={name}
             placeholderTextColor="#666666"
             autoCorrect={false}
+            onChangeText={(text) => setName(text)}
             style={[
               styles.textInput,
               {
@@ -38,9 +76,11 @@ const EditProfile = ({navigation}) => {
           <Icon name="chart-arc" size={20} />
           <TextInput
             placeholder="Age"
+            value={age}
             placeholderTextColor="#666666"
             keyboardType="number-pad"
             autoCorrect={false}
+            onChangeText={(text) => setAge(text)}
             style={[
               styles.textInput,
               {
@@ -52,9 +92,11 @@ const EditProfile = ({navigation}) => {
           <Icon name="human-male-height-variant" size={20} />
           <TextInput
             placeholder="Height"
+            value={height}
             placeholderTextColor="#666666"
             keyboardType="number-pad"
             autoCorrect={false}
+            onChangeText={(text) => setHeight(text)}
             style={[
               styles.textInput,
               {
@@ -68,7 +110,9 @@ const EditProfile = ({navigation}) => {
             placeholder="Weight"
             placeholderTextColor="#666666"
             keyboardType="number-pad"
+            value={weight}
             autoCorrect={false}
+            onChangeText={(text) => setWeight(text)}
             style={[
               styles.textInput,
               {
@@ -77,11 +121,7 @@ const EditProfile = ({navigation}) => {
           />
         </View>
         <View style={styles.infoContainer}>
-          <TouchableOpacity style={styles.btn} onPress={
-            () => {
-              navigation.navigate("ProfileScreen");
-            }
-          }>
+          <TouchableOpacity style={styles.btn} onPress={saveBio}>
               <Text style={styles.btntext}>SAVE EDIT</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn1} onPress={() => {

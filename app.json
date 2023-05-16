@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/Splash.jpg",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -29,7 +29,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "91edeb72-a42a-4dbe-b8f2-33d89c32694e"
+        "projectId": "7edd14fe-89b2-4136-abb0-a77b9f1cf218"
       }
     }
   }

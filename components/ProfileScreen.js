@@ -12,8 +12,7 @@ import axios from "axios";
 import config from "../config";
 import { fetchIP } from "../src/redux-thunk/Action";
 import { useSelector, useDispatch } from "react-redux";
-import Workout from "./Workout";
-import Record from "./Record";
+
 
 const ProfileScreen = () => {
   const ipData = useSelector((state) => state.data);

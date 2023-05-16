@@ -1,5 +1,7 @@
 # APLIKASI CSPORT
 
+## Link APK : https://expo.dev/artifacts/eas/twR2QDUhWK5dmXT3U22sQ6.apk
+
 ## Deskripsi
 Aplikasi CSport merupakan aplikasi "olahraga" yang dapat membantu kamu dalam melakukan kegiatan jasmani. Dengan aplikasi ini pastinya akan membuat kegiatan olahragamu berjalan secara maksimal dan penuh semangat.
 
