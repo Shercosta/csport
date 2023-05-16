@@ -108,6 +108,11 @@ const StartRunning = () => {
         </Text>
       </View>
       <View style={styles.item}>
+        <Text style={styles.value}>
+          <Text style={styles.timeText}>----------</Text>
+        </Text>
+      </View>
+      <View style={styles.item}>
         <Text style={styles.label}>DISTANCE:</Text>
         <Text style={styles.value}>{distance} M</Text>
       </View>
@@ -127,7 +132,7 @@ const styles = StyleSheet.create({
   },
   item: {
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 40,
   },
   label: {
     fontSize: 50,

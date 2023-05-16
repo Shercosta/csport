@@ -30,7 +30,7 @@ const ProfileScreen = () => {
     navigation.navigate("Running");
   };
   const EditProfile = () => {
-    navigation.navigate("EditProfile");
+    navigation.navigate("Edit Profile");
   };
   const Workout = () => {
     navigation.navigate("Workout");
